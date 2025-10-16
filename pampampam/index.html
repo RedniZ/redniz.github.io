@@ -37,6 +37,76 @@
     .photo {
       position: relative;
       z-index: 1;
+      width: 90vw;
+      max-width: 500px;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 6px solid rgba(255, 255, 255, 0.6);
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.9);
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    
+    button {
+      position: relative;
+      z-index: 2;
+      margin-top: 50px;
+      width: 90vw;
+      max-width: 500px;
+      padding: 20px 0;
+      font-size: 24px;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.6);
+      border: 3px solid #00bfff;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: #00bfff;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+  <div class="photo">
+    <img src="genka.jpg" alt="PamPamPamGenka">
+  </div>
+
+  <audio id="sound" src="pampampamgenka.mp3" loop></audio>
+
+  <button id="muteBtn">🔇 Заглушить</button>
+
+  <script>
+    const audio = document.getElementById('sound');
+    const btn = document.getElementById('muteBtn');
+    let isPlaying = false;
+
+    
+    document.body.addEventListener('click', (e) => {
+      if (e.target !== btn && !isPlaying) {
+        audio.play();
+        isPlaying = true;
+      }
+    });
+
+    
+    btn.addEventListener('click', () => {
+      audio.muted = !audio.muted;
+      btn.textContent = audio.muted ? '🔊 Включить' : '🔇 Заглушить';
+    });
+  </script>
+</body>
+</html>    .photo {
+      position: relative;
+      z-index: 1;
       width: 80vw;
       max-width: 400px;
       aspect-ratio: 1 / 1;
