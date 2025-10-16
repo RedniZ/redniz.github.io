@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>pam pam pam</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #000;
+      position: relative;
+      font-family: sans-serif;
+    }
+
+    
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("genka.jpg") center/cover no-repeat;
+      filter: blur(20px) brightness(0.6);
+      z-index: 0;
+    }
+
+    
+    .photo {
+      position: relative;
+      z-index: 1;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid rgba(255, 255, 255, 0.6);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    
+    button {
+      position: relative;
+      z-index: 2;
+      margin-top: 40px;
+      padding: 12px 28px;
+      font-size: 18px;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.5);
+      border: 2px solid #00bfff;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: #00bfff;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+  <div class="photo">
+    <img src="photo.jpg" alt="Фото">
+  </div>
+
+  <audio id="sound" src="pampampam.mp3" autoplay loop></audio>
+
+  <button id="muteBtn">🔇 Заглушить</button>
+
+  <script>
+    const audio = document.getElementById('sound');
+    const btn = document.getElementById('muteBtn');
+
+    btn.addEventListener('click', () => {
+      audio.muted = !audio.muted;
+      btn.textContent = audio.muted ? '🔊 Включить' : '🔇 Заглушить';
+    });
+  </script>
+</body>
+</html>
