@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>iba chotko 1</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #000;
+      position: relative;
+      font-family: sans-serif;
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("ibachotko1.jpg") center/cover no-repeat;
+      filter: blur(20px) brightness(0.6);
+      z-index: 0;
+    }
+
+    .photo {
+      position: relative;
+      z-index: 1;
+      width: min(90vw, 500px);
+      height: min(60vw, 330px);
+      overflow: hidden;
+      border: 6px solid rgba(255, 255, 255, 0.6);
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.9);
+      margin-bottom: 70px;
+      border-radius: 25px;
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    button {
+      position: relative;
+      z-index: 2;
+      margin-top: 20px;
+      width: min(92vw, 480px);
+      padding: 28px 0;
+      font-size: 28px;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.6);
+      border: 3px solid #00bfff;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background: #00bfff;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+  <div class="photo">
+    <img src="ibachotko1.jpg" alt="IbaChotko1">
+  </div>
+
+  <audio id="sound" src="ibachotko1.mp3" loop></audio>
+
+  <button id="muteBtn">🔇 Заглушить</button>
+
+  <script>
+    const audio = document.getElementById('sound');
+    const btn = document.getElementById('muteBtn');
+    let isPlaying = false;
+
+    document.body.addEventListener('click', e => {
+      if (e.target !== btn && !isPlaying) {
+        audio.play();
+        isPlaying = true;
+      }
+    });
+
+    btn.addEventListener('click', () => {
+      audio.muted = !audio.muted;
+      btn.textContent = audio.muted ? '🔊 Включить' : '🔇 Заглушить';
+    });
+  </script>
+</body>
+</html>
